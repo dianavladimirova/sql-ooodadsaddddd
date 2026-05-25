@@ -1,0 +1,5 @@
+SELECT title, description, release_year
+FROM film
+WHERE (description LIKE '%Dog%' OR description LIKE '%Cat%')
+  AND (rating LIKE '%PG%' OR rating LIKE '%PG-13%')
+ORDER BY title ASC;
