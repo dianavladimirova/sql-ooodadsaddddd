@@ -1,0 +1,9 @@
+//Напишите SQL запрос, чтобы получить список фильмов, отсутствующих в прокате (таблица inventory).
+Отобразите названия этих фильмов в столбце с названиемfilm_title в алфавитном порядке.
+Используйте для решения задачи соединение таблиц.
+
+select f.title as film_title 
+from film f
+LEFT JOIN inventory i ON f.film_id=i.film_id
+where i.film_id is NULL
+order by film_title
