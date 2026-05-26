@@ -1,0 +1,9 @@
+//Напишите SQL запрос для получения списка языков из таблицы language, на которых нет доступных фильмов.
+Представьте результат в таблице с одним столбцом - language, отсортированным по алфавиту.
+Используйте для решения задачи соединение таблиц.
+
+SELECT l.name AS language
+FROM language l
+LEFT JOIN film f ON l.language_id = f.language_id
+WHERE f.film_id IS NULL
+ORDER BY l.name;
