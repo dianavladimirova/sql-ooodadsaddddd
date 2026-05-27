@@ -1,4 +1,4 @@
-SELECT f.title, c.name
-FROM film f
-JOIN film_category fc ON f.film_id = fc.film_id
-JOIN category c ON fc.category_id = c.category_id;
+SELECT f.title, c.name //надо вывести названия фильмов(title) и котегории(name)
+FROM film f //задаем таблицу откуда берем данные
+JOIN film_category fc ON f.film_id = fc.film_id //соединяем таблицы (film_category и film f) по ячейке film_id- они есть в обоих тб
+JOIN category c ON fc.category_id = c.category_id; //соединяем табл (category и film_category) по ячейке category_id и выводим по селекту title and name из 
