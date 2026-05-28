@@ -1,0 +1,10 @@
+//Извлеките имя и домен из адресов электронной почты клиентов в базе данных Sakila.
+Напишите запрос, возвращающий три столбца: email, address – часть адреса электронной почты перед знаком «@» и domain — часть после «@».
+Отсортируйте результат по полю email.
+
+  SELECT 
+    email,
+    SUBSTRING(email, 1, POSITION('@' IN email) - 1) AS address, //разделяем до и после @ 
+    SUBSTRING(email, POSITION('@' IN email) + 1) AS domain
+FROM customer
+ORDER BY email; 
