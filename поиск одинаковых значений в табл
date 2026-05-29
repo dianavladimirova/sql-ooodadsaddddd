@@ -1,0 +1,12 @@
+//Найдите клиентов чьё имя является фамилией 
+другого клиента. Выведите таблицу с полями customer_id, first_name, last_name 
+для первого клиента и такие же поля customer_id, first_name, last_name для второго.
+Отсортируйте по customer_id первого клиента.
+
+
+SELECT 
+    c1.customer_id, c1.first_name, c1.last_name,
+    c2.customer_id, c2.first_name, c2.last_name
+FROM customer c1
+JOIN customer c2 ON c1.first_name = c2.last_name
+ORDER BY c1.customer_id;
