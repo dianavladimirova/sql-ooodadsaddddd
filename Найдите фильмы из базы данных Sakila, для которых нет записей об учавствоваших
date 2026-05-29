@@ -1,0 +1,8 @@
+//Найдите фильмы из базы данных Sakila, для которых нет записей об учавствоваших в них актёрах используя соединение таблиц JOIN.
+Выведите результирующую с полями title, release_year отсортированных по названию фильма.
+
+select f.title, f.release_year 
+from film f
+left join film_actor fa on f.film_id=fa.film_id
+where fa.film_id is NULL
+order by title;
