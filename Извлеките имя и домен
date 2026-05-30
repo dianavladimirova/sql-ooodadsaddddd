@@ -7,4 +7,4 @@
     SUBSTRING(email, 1, POSITION('@' IN email) - 1) AS address, //разделяем до и после @ 
     SUBSTRING(email, POSITION('@' IN email) + 1) AS domain
 FROM customer
-ORDER BY email; 
+ORDER BY email;  
