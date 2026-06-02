@@ -1,0 +1,25 @@
+Найдите клиентов, которые встречались друг с другом в одном из пунктов проката. Выведите таблицу с полями:
+- meet_time - время аренды,
+- store_id - место встречи,
+- customers - список встречавшихся клиентов в формате JOHN SHOW, DAENERYS TARGARYEN (двое или более) - в порядке их фамилий.
+Результирующую таблицу отсортируйте по времени встречи и номеру пункта проката.
+(Клиенты встречались, если брали в аренду фильмы в одном отделении в одно время. Место встречи определяется по месту работы сотрудника.)
+
+SELECT 
+    meet_time,
+    store_id,
+    GROUP_CONCAT(customer_name ORDER BY last_name) AS customers
+FROM (
+    SELECT DISTINCT
+        r.rental_date AS meet_time,
+        s.store_id,
+        CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+        c.last_name
+    FROM rental r
+    JOIN staff st ON r.staff_id = st.staff_id
+    JOIN store s ON st.store_id = s.store_id
+    JOIN customer c ON r.customer_id = c.customer_id
+) t
+GROUP BY meet_time, store_id
+HAVING COUNT(*) >= 2
+ORDER BY meet_time, store_id;
